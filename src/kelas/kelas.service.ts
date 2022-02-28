@@ -11,7 +11,11 @@ export class KelasService {
   }
 
   findAll() {
-    return this.prisma.kelas.findMany();
+    return this.prisma.kelas.findMany({
+      include: {
+        siswa: true,
+      },
+    });
   }
 
   findOne(id: number) {

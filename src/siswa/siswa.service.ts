@@ -7,7 +7,11 @@ export class SiswaService {
   constructor(private prisma: PrismaService) {}
 
   all() {
-    return this.prisma.siswa.findMany();
+    return this.prisma.siswa.findMany({
+      include: {
+        kelas: true,
+      },
+    });
   }
 
   get(id?: number) {
