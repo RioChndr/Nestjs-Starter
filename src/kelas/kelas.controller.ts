@@ -6,7 +6,9 @@ import {
   Patch,
   Param,
   Delete,
+  UseGuards,
 } from '@nestjs/common';
+import { AuthGuard } from 'src/auth/auth.guard';
 import { KelasService } from './kelas.service';
 
 @Controller('kelas')
@@ -18,6 +20,7 @@ export class KelasController {
     return this.kelasService.create(body);
   }
 
+  @UseGuards(AuthGuard)
   @Get()
   findAll() {
     return this.kelasService.findAll();
