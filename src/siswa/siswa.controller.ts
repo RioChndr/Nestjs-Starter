@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import {
   Body,
   Controller,
@@ -18,11 +19,46 @@ export class SiswaController {
     return this.siswaService.all();
   }
 
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
   @Get(':id')
   getSiswa(@Param('id') id: number) {
     return this.siswaService.get(+id);
   }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
   @Post()
   async addSiswa(
     @Body() body: { nama: string; alamat: string; kelas?: number },
@@ -33,10 +69,36 @@ export class SiswaController {
     });
   }
 
+
+
+
+
+
+
+
+
+
+
+
+  
+
   @Delete(':id')
   async removeSiswa(@Param('id') id: number) {
     return await this.siswaService.remove(+id);
   }
+
+
+
+
+
+
+
+
+
+
+
+
+  
 
   @Patch(':id')
   async updateSiswa(
@@ -48,6 +110,16 @@ export class SiswaController {
       alamat: body.alamat,
     });
   }
+
+
+
+
+
+
+
+
+
+  
 
   @Patch('update/assign-kelas')
   async assignKelas(@Body() body: { siswaId: number; kelasId: number }) {

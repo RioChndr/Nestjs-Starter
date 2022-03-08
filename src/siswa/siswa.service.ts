@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Injectable } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
 import { PrismaService } from 'src/prisma/prisma.service';
@@ -9,11 +10,11 @@ export class SiswaService {
   all() {
     return this.prisma.siswa.findMany({
       include: {
-        kelas: true,
+        Kelas: true,
       },
     });
   }
-
+  
   get(id?: number) {
     return this.prisma.siswa.findFirst({
       where: {
@@ -51,7 +52,7 @@ export class SiswaService {
         id: +siswaId,
       },
       data: {
-        kelas: {
+        Kelas: {
           connect: {
             id: +kelasId,
           },
