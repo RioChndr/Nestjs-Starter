@@ -1,26 +1,36 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
-model Siswa {
-  id Int @default(autoincrement()) @id
-  nama String
-  alamat String
-  kelas Kelas? @relation(fields: [kelasId], references: [id])
-  kelasId Int?
+model Kelas {
+  id    Int     @id @default(autoincrement())
+  nama  String
+  wali  String
+  Siswa Siswa[]
 }
 
-model Kelas {
-  id Int @default(autoincrement()) @id
-  nama String
-  wali String
-  siswa Siswa[]
+model Siswa {
+  id      Int    @id @default(autoincrement())
+  nama    String
+  alamat  String
+  kelasId Int?
+  Kelas   Kelas? @relation(fields: [kelasId], references: [id])
+}
+
+model Guru {
+  id   Int     @id @default(autoincrement())
+  nama  String
+  jadwal Jadwal[]
+}
+
+model Jadwal {
+  id   Int     @id @default(autoincrement())
+  hari String
+  guruId Int?
+  guru Guru? @relation(fields: [guruId], references: [id])
 }

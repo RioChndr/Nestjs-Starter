@@ -13,7 +13,7 @@ export class KelasService {
   findAll() {
     return this.prisma.kelas.findMany({
       include: {
-        siswa: true,
+        Siswa: true,
       },
     });
   }
