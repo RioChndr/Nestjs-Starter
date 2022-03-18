@@ -6,9 +6,12 @@ import {
   Patch,
   Param,
   Delete,
+  UseGuards,
 } from '@nestjs/common';
+import { AuthGuard } from 'src/auth/auth.guard';
 import { KelasService } from './kelas.service';
 
+@UseGuards(AuthGuard)
 @Controller('kelas')
 export class KelasController {
   constructor(private readonly kelasService: KelasService) {}
