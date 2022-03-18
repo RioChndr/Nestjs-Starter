@@ -1,7 +1,7 @@
 import { BadRequestException, Body, Controller, Post } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
 import { AuthService } from './auth.service';
-import { UserService } from './user.service';
+import { UserService } from './user/user.service';
 
 @Controller('auth')
 export class AuthController {
@@ -14,7 +14,6 @@ export class AuthController {
     try {
       return await this.authService.authenticate(body.email, body.password);
     } catch (err) {
-      console.log(err);
       throw new BadRequestException(err);
     }
   }

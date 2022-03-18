@@ -24,7 +24,7 @@ export class AuthGuard implements CanActivate {
 
       if (!decodeToken.uid) return false;
       return true;
-    } catch (err) {
+    } catch {
       return false;
     }
   }

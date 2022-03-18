@@ -11,6 +11,7 @@ import {
 import { AuthGuard } from 'src/auth/auth.guard';
 import { KelasService } from './kelas.service';
 
+@UseGuards(AuthGuard)
 @Controller('kelas')
 export class KelasController {
   constructor(private readonly kelasService: KelasService) {}
@@ -20,7 +21,6 @@ export class KelasController {
     return this.kelasService.create(body);
   }
 
-  @UseGuards(AuthGuard)
   @Get()
   findAll() {
     return this.kelasService.findAll();

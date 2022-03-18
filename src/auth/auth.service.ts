@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { UserService } from './user.service';
+import { UserService } from './user/user.service';
 import * as jwt from 'jsonwebtoken';
 
 @Injectable()
@@ -24,9 +24,4 @@ export class AuthService {
       throw err;
     }
   }
-}
-
-export class NotAuthenticatedException extends Error {
-  name = 'NotAuthenticatedException';
-  message = 'Not authenticated, token are not valid';
 }
